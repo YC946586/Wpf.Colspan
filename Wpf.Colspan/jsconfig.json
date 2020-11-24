@@ -1,0 +1,85 @@
+{
+  "name": "YC_XIXI",
+  "links": [
+    {
+      "name": "NumberNodes",
+      "dataList": [
+        {
+          "word": "NumberNodes1",
+          "IsSelect": "false"
+        },
+        {
+          "word": "NumberNodes2",
+          "IsSelect": "false"
+        },
+        {
+          "word": "NumberNodes3",
+          "IsSelect": "false"
+        }
+      ]
+    },
+    {
+      "name": "SelectNodes",
+      "dataList": [
+        {
+          "word": "SelectNodes1",
+          "IsSelect": "false"
+        },
+        {
+          "word": "SelectNodes2",
+          "IsSelect": "false"
+        },
+        {
+          "word": "SelectNodes3",
+          "IsSelect": "false"
+        }
+      ]
+    },
+    {
+      "name": "DateNodes",
+      "dataList": [
+        {
+          "word": "DateNodes1",
+          "IsSelect": "false"
+        },
+        {
+          "word": "DateNodes2",
+          "IsSelect": "false"
+        },
+        {
+          "word": "DateNodes3",
+          "IsSelect": "false"
+        }
+      ]
+    },
+    {
+      "name": "VoucherWordNodes",
+      "dataList": [
+        {
+          "word": "VoucherWordNodes1",
+          "IsSelect": "false"
+        },
+        {
+          "word": "VoucherWordNodes2",
+          "IsSelect": "false"
+        },
+        {
+          "word": "VoucherWordNodes2",
+          "IsSelect": "false"
+        }
+      ]
+    },
+    {
+      "name": "SourceType",
+      "data": "SourceType123"
+    },
+    {
+      "name": "VoucherMoney",
+      "data": 12323
+    },
+    {
+      "name": "Auditor",
+      "data": "Auditor21312"
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+﻿<Window x:Class="Wpf.Colspan.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpf.Colspan"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="850">
+    <Window.Resources>
+        <DataTemplate x:Key="ItemsControlControlTemplate">
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="120"/>
+                </Grid.ColumnDefinitions>
+                <ItemsControl  Style="{StaticResource ItemsControlXhStyle}" ItemsSource="{Binding NumberNodes}"   />
+                <ItemsControl  ItemsSource="{Binding SelectNodes}"  Grid.Column="1" BorderThickness="0"   ItemsPanel="{StaticResource SwiperContentPanelTemplate}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderThickness="0 0 1 1" Height="29" BorderBrush="#DEDEDE" >
+                                <CheckBox  HorizontalAlignment="Center"   IsChecked="{Binding Path=IsSelect,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+                <Button Content="修改" Grid.Column="2"  CommandParameter="{Binding }" Command="{Binding DataContext.EditCommand,RelativeSource={RelativeSource AncestorType=ItemsControl}}"/>
+
+                <Border BorderThickness="1 0 0 0" Grid.Column="3" BorderBrush="#DEDEDE">
+                    <ItemsControl  ItemsSource="{Binding DateNodes}" Style="{StaticResource ItemsControlStyle}"/>
+                </Border>
+
+                <ItemsControl  Grid.Column="4" ItemsSource="{Binding VoucherWordNodes}" Style="{StaticResource ItemsControlStyle}" />
+                <Border BorderThickness="0 0 1 1" Grid.Column="5" BorderBrush="#DEDEDE">
+                    <TextBlock Text="{Binding SourceType}" FontSize="14" Foreground="#666666"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+                <Border BorderThickness="0 0 1 1" Grid.Column="6" BorderBrush="#DEDEDE">
+                    <TextBlock Text="{Binding VoucherMoney}" FontSize="14" Foreground="#666666" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                </Border>
+                <Border BorderThickness="0 0 1 1" Grid.Column="7" BorderBrush="#DEDEDE">
+                    <TextBlock Text="{Binding Auditor}" FontSize="14" Foreground="#666666" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Background="#cccccc" BorderThickness="1"  BorderBrush="#DEDEDE">
+            <ScrollViewer  ScrollViewer.HorizontalScrollBarVisibility="Hidden"  ScrollViewer.VerticalScrollBarVisibility="Hidden"  FocusVisualStyle="{x:Null}"   x:Name="scrView"  >
+                <Grid  VerticalAlignment="Center" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="120"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="序号"     Style="{DynamicResource TextBlockHanderStyle}"/>
+                    <CheckBox Content="全选" VerticalAlignment="Center" IsChecked="{Binding IsAllCheck,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  Grid.Column="1" />
+                    <TextBlock Text="操作" Grid.Column="2"  Style="{DynamicResource TextBlockHanderStyle}"/>
+                    <TextBlock Text="填单日期" Grid.Column="3"  Style="{DynamicResource TextBlockHanderStyle}"/>
+                    <TextBlock Text="凭证字号" Grid.Column="4"  Style="{DynamicResource TextBlockHanderStyle}"/>
+                    <TextBlock Text="来源类型" Grid.Column="5"  Style="{DynamicResource TextBlockHanderStyle}"/>
+                    <TextBlock Text="凭证总金额" Grid.Column="6"  Style="{DynamicResource TextBlockHanderStyle}"/>
+                    <TextBlock Text="审核人" Grid.Column="7"  Style="{DynamicResource TextBlockHanderStyle}"/>
+                </Grid>
+            </ScrollViewer>
+        </Border>
+        <ScrollViewer   HorizontalScrollBarVisibility="Visible"  Grid.Row="1" VerticalScrollBarVisibility="Auto"  FocusVisualStyle="{x:Null}"   ScrollChanged="ScrollViewer_ScrollChanged">
+            <ItemsControl   ItemsSource="{Binding DataList,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                            ItemTemplate="{StaticResource ItemsControlControlTemplate}"
+                            ItemsPanel="{StaticResource SwiperContentPanelTemplate}"/>
+
+        </ScrollViewer>
+    </Grid>
+</Window>
