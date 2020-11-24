@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 namespace Wpf.Colspan
 {
 
-
     public class JsonEntity
     {
         public string name { get; set; }
